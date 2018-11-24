@@ -3,16 +3,24 @@
 
 <head>
     <title>textfit-div demo</title>
+
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="../../polymer/polymer.html">
-    <link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
-    <link rel="import" href="../textfit-div.html">
-    <link rel="import" href="../../paper-card/paper-card.html">
-    <link rel="import" href="../../paper-styles/demo-pages.html">
-    <link rel="import" href="../../paper-input/paper-input.html">
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+        import '../textfit-div.js';
+        import '@polymer/iron-flex-layout/iron-flex-layout.js';
+        import '@polymer/paper-card/paper-card.js';
+        import '@polymer/paper-styles/demo-pages.js';
+        import '@polymer/paper-input/paper-input.js';
+        import '@polymer/iron-flex-layout/iron-flex-layout-classes.js';
+    </script>
+
     <custom-style>
         <style is="custom-style" include="iron-flex">
             .horizontal-section {
@@ -39,31 +47,33 @@
                     text-align: center;
                     font-style: italic;
                     font-weight: bold;
-                };
+                }
+
+                ;
             }
         </style>
     </custom-style>
 </head>
 
-<body unresolved>
-<dom-bind id="app">
-    <template>
-        <paper-input label="Enter some text here" value="{{text}}"></paper-input>
-        <div class="layout horizontal flex wrap">
-            <div class="horizontal-section layout horizontal flex">
-                <textfit-div class="fullHeight flex" text="{{text}}"></textfit-div>
+<body>
+    <dom-bind id="app">
+        <template>
+            <paper-input label="Enter some text here" value="{{text}}"></paper-input>
+            <div class="layout horizontal flex wrap">
+                <div class="horizontal-section layout horizontal flex">
+                    <textfit-div class="fullHeight flex" text="{{text}}"></textfit-div>
+                </div>
+                <div class="horizontal-section layout horizontal flex">
+                    <textfit-div class="fullHeight flex styled" text="Styled text"></textfit-div>
+                </div>
             </div>
-            <div class="horizontal-section layout horizontal flex">
-                <textfit-div class="fullHeight flex styled" text="Styled text"></textfit-div>
-            </div>
-        </div>
-        <paper-card heading="" image="" elevation="1" animated-shadow="false">
-            <textfit-div class="fullHeight flex"
-                         text="A little bit more text to showcase an extreme sample with multi-line support enabled to demonstrate wrapping capabilities"
-                         horizontal-center multi-line></textfit-div>
-        </paper-card>
-    </template>
-</dom-bind>
+            <paper-card heading="" image="" elevation="1" animated-shadow="false">
+                <textfit-div class="fullHeight flex" text="A little bit more text to showcase an extreme sample with multi-line support enabled to demonstrate wrapping capabilities"
+                    horizontal-center="" multi-line=""></textfit-div>
+            </paper-card>
+        </template>
+    </dom-bind>
+
 </body>
 
 </html>
