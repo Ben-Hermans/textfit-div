@@ -13,23 +13,21 @@
  */
 /*global define:true, document:true, window:true, HTMLElement:true*/
 
-window.textFit = function () {
+window.textFit = function (els, options) {
     "use strict";
-  
-    var defaultSettings = {
-      alignVert: false, // if true, textFit will align vertically using css tables
-      alignHoriz: false, // if true, textFit will set text-align: center
-      multiLine: false, // if true, textFit will not set white-space: no-wrap
-      detectMultiLine: true, // disable to turn off automatic multi-line sensing
-      minFontSize: 6,
-      maxFontSize: 80,
-      reProcess: true, // if true, textFit will re-process already-fit nodes. Set to 'false' for better performance
-      widthOnly: false, // if true, textFit will fit text to element width, regardless of text height
-      alignVertWithFlexbox: false, // if true, textFit will use flexbox for vertical alignment
-    };
-  
-    return function textFit(els, options) {
-  
+
+      var defaultSettings = {
+        alignVert: false, // if true, textFit will align vertically using css tables
+        alignHoriz: false, // if true, textFit will set text-align: center
+        multiLine: false, // if true, textFit will not set white-space: no-wrap
+        detectMultiLine: true, // disable to turn off automatic multi-line sensing
+        minFontSize: 6,
+        maxFontSize: 80,
+        reProcess: true, // if true, textFit will re-process already-fit nodes. Set to 'false' for better performance
+        widthOnly: false, // if true, textFit will fit text to element width, regardless of text height
+        alignVertWithFlexbox: false, // if true, textFit will use flexbox for vertical alignment
+      };
+
       if (!options) options = {};
   
       // Extend options.
@@ -219,5 +217,4 @@ window.textFit = function () {
       css.innerHTML = style;
       document.body.appendChild(css);
     }
-  };
   

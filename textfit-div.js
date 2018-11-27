@@ -1,7 +1,7 @@
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { html, PolymerElement } from '@polymer/polymer';
 import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class.js';
-import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js'
-import './textFit.js'
+import { IronResizableBehavior } from '@polymer/iron-resizable-behavior/iron-resizable-behavior.js';
+import './textFit.js';
 
 /**
  * `textfit-div`
@@ -13,9 +13,13 @@ import './textFit.js'
  */
 class TextfitDiv extends mixinBehaviors([IronResizableBehavior], PolymerElement) {
 
-  constructor() {
+  constructor(){
     super();
-    this.addEventListener('iron-resize', this._onIronResize.bind(this));
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('iron-resize', this.onIronResize.bind(this));
   }
 
   static get template() {
@@ -183,6 +187,7 @@ class TextfitDiv extends mixinBehaviors([IronResizableBehavior], PolymerElement)
  * Initial textfit calculation is triggered.
  */
   attached() {
+    super.attached();
     this.isAttached = true;
 
     if (this.manualFire)
@@ -193,6 +198,7 @@ class TextfitDiv extends mixinBehaviors([IronResizableBehavior], PolymerElement)
   }
 
   detached() {
+    super.detached();
     this.isAttached = false;
   }
   /**
@@ -210,7 +216,7 @@ class TextfitDiv extends mixinBehaviors([IronResizableBehavior], PolymerElement)
   /**
    * Triggered on iron-resize event.
    */
-  _onIronResize() {
+  onIronResize() {
     if (this.manualFire)
       return;
     this.async(this.doFitMe);
